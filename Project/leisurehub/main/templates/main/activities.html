@@ -1,0 +1,19 @@
+{% extends 'main/base.html' %}
+{% block content %}
+<h2>Available Activities</h2>
+
+<ul class="list-group">
+  {% for activity in activities %}
+    <li class="list-group-item">
+      <strong>{{ activity.name }}</strong><br>
+      {{ activity.description }}<br>
+      <span class="text-muted">Date: {{ activity.date }} | Price: £{{ activity.price }}</span><br>
+
+      <a href="{% url 'book_activity' activity.id %}" class="btn btn-sm btn-primary mt-2">Book Now</a>
+    </li>
+  {% empty %}
+    <li class="list-group-item">No activities available.</li>
+  {% endfor %}
+</ul>
+
+{% endblock %}

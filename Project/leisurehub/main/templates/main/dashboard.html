@@ -1,0 +1,17 @@
+{% extends 'main/base.html' %}
+{% block content %}
+<h1>Welcome to LeisureHub</h1>
+<p>Use the navigation below to access your features:</p>
+
+{% if user.role == 'coordinator' %}
+  <a href="{% url 'coordinator_activities' %}" class="btn btn-success">Manage My Activities</a>
+
+{% elif user.role == 'manager' %}
+  <a href="{% url 'manage_orders' %}" class="btn btn-primary">Manage Orders</a>
+
+{% elif user.role == 'user' %}
+  <a href="{% url 'activities' %}" class="btn btn-outline-primary me-2">Browse Activities</a>
+  <a href="{% url 'items' %}" class="btn btn-outline-success">Shop Items</a>
+{% endif %}
+
+{% endblock %}

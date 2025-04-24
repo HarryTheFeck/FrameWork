@@ -1,0 +1,54 @@
+[
+    {
+      "model": "main.activity",
+      "pk": 1,
+      "fields": {
+        "name": "Yoga Retreat",
+        "description": "A relaxing weekend of guided yoga.",
+        "date": "2025-04-24",
+        "price": "120.00",
+        "coordinator": 3
+      }
+    },
+    {
+      "model": "main.booking",
+      "pk": 1,
+      "fields": {
+        "user": 2,
+        "activity": 1,
+        "date_booked": "2025-04-24",
+        "status": "Confirmed"
+      }
+    },
+    {
+      "model": "main.item",
+      "pk": 1,
+      "fields": {
+        "name": "Yoga Mat",
+        "description": "Eco-friendly yoga mat.",
+        "price": "35.99",
+        "stock": 10
+      }
+    },
+    {
+      "model": "main.order",
+      "pk": 1,
+      "fields": {
+        "user": 2,
+        "total_price": "35.99",
+        "status": "Pending",
+        "date_ordered": "2025-04-24"
+      }
+    },
+    {
+      "model": "main.orderitem",
+      "pk": 1,
+      "fields": {
+        "order": 1,
+        "item": 1,
+        "quantity": 1,
+        "price": "35.99"
+      }
+    }
+  ]
+  

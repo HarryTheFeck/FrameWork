@@ -1,0 +1,24 @@
+{% extends 'main/base.html' %}
+{% block content %}
+<h2>Shop Items</h2>
+
+<div class="row">
+  {% for item in items %}
+  <div class="col-md-4 mb-3">
+    <div class="card h-100 shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title">{{ item.name }}</h5>
+        <p class="card-text">{{ item.description }}</p>
+        <p><strong>£{{ item.price }}</strong></p>
+        <p class="text-muted">Stock: {{ item.stock }}</p>
+
+        <a href="{% url 'order_item' item.id %}" class="btn btn-success btn-sm">Buy Now</a>
+      </div>
+    </div>
+  </div>
+  {% empty %}
+    <p>No items found.</p>
+  {% endfor %}
+</div>
+
+{% endblock %}

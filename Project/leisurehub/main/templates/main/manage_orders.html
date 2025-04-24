@@ -1,0 +1,38 @@
+{% extends 'main/base.html' %}
+{% block content %}
+<h2>Manage Orders</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Order ID</th>
+      <th>User</th>
+      <th>Date Ordered</th>
+      <th>Status</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for order in orders %}
+    <tr>
+      <td>{{ order.id }}</td>
+      <td>{{ order.user.username }}</td>
+      <td>{{ order.date_ordered }}</td>
+      <td>{{ order.status }}</td>
+      <td>
+        <form method="post" action="{% url 'update_order_status' order.id %}">{% csrf_token %}
+          <select name="status" class="form-select form-select-sm">
+            <option value="Pending" {% if order.status == 'Pending' %}selected{% endif %}>Pending</option>
+            <option value="Processing" {% if order.status == 'Processing' %}selected{% endif %}>Processing</option>
+            <option value="Shipped" {% if order.status == 'Shipped' %}selected{% endif %}>Shipped</option>
+            <option value="Completed" {% if order.status == 'Completed' %}selected{% endif %}>Completed</option>
+          </select>
+          <button class="btn btn-sm btn-primary mt-1" type="submit">Update</button>
+        </form>
+      </td>
+    </tr>
+    {% empty %}
+    <tr><td colspan="5">No orders found.</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
